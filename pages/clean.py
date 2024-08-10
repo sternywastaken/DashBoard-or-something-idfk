@@ -40,16 +40,16 @@ with col[0]:
 
 
             if find_replace:
-                st.session_state.df[attr] = st.session_state.df[attr].str.replace(
-                    find_replace[0],
-                    find_replace[1]
-                ) if is_numeric_dtype(attr) else st.session_state.df[attr].replace(
+                st.session_state.df[attr] = st.session_state.df[attr].replace(
                     int(find_replace[0]),
                     int(find_replace[1])
+                ) if is_numeric_dtype(attr) else st.session_state.df[attr].str.replace(
+                    find_replace[0],
+                    find_replace[1]
                 )
 
-                if st.button("Replace"):
-                    st.rerun()
+            if st.button("Replace"):
+                st.rerun()
 
             if st.button("Delete"):
                 st.session_state.df.drop(columns=[attr], axis=1, inplace=True)
