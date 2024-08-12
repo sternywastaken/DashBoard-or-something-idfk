@@ -68,10 +68,10 @@ with col[0]:
                 auto = st.sidebar.toggle("Auto bins?")
 
                 if auto:
-                    hist = sns.histplot(data=data[attr], bins = auto, kde=True)
+                    hist = sns.histplot(data=data[attr].head(range_), bins = auto, kde=True)
                 else:
                     bins_ = st.sidebar.slider("Bins", 0, 100, 10)
-                    hist = sns.histplot(data=data[attr], bins = bins_, kde=True)
+                    hist = sns.histplot(data=data[attr].head(range_), bins = bins_, kde=True)
 
                 st.pyplot(hist.get_figure())
 
